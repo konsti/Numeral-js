@@ -101,7 +101,7 @@
         this.numeral.language('de-ch', language);
     }
 }());
-/*! 
+/*!
  * numeral.js language configuration
  * language : German (de) – generally useful in Germany, Austria, Luxembourg, Belgium
  * author : Marco Krage : https://github.com/sinky
@@ -109,7 +109,7 @@
 (function () {
     var language = {
         delimiters: {
-            thousands: ' ',
+            thousands: '.',
             decimal: ','
         },
         abbreviations: {
@@ -135,6 +135,7 @@
         this.numeral.language('de', language);
     }
 }());
+
 /*! 
  * numeral.js language configuration
  * language : english Australia (au)
@@ -248,6 +249,45 @@
     // Browser
     if (typeof window !== 'undefined' && this.numeral && this.numeral.language) {
         this.numeral.language('en-us', language);
+    }
+}());
+
+/*!
+ * numeral.js language configuration
+ * language : English for South Africa
+ * author : Stewart Scott : https://github.com/stewart42
+ */
+(function() {
+    var language = {
+        delimiters: {
+            thousands: ',',
+            decimal: '.'
+        },
+        abbreviations: {
+            thousand: 'k',
+            million: 'm',
+            billion: 'b',
+            trillion: 't'
+        },
+        ordinal: function(number) {
+            var b = number % 10;
+            return (~~(number % 100 / 10) === 1) ? 'th' :
+                (b === 1) ? 'st' :
+                (b === 2) ? 'nd' :
+                (b === 3) ? 'rd' : 'th';
+        },
+        currency: {
+            symbol: 'R'
+        }
+    };
+
+    // Node
+    if (typeof module !== 'undefined' && module.exports) {
+        module.exports = language;
+    }
+    // Browser
+    if (typeof window !== 'undefined' && this.numeral && this.numeral.language) {
+        this.numeral.language('en-ZA', language);
     }
 }());
 
@@ -785,6 +825,41 @@
     // Browser
     if (typeof window !== 'undefined' && this.numeral && this.numeral.language) {
         this.numeral.language('nl', language);
+    }
+}());
+
+/*!
+ * numeral.js language configuration
+ * language : Norwegian (no)
+ * author : Runar Ingebrigtsen: https://github.com/ringe
+ */
+(function () {
+    var language = {
+        delimiters: {
+            thousands: ' ',
+            decimal: ','
+        },
+        abbreviations: {
+            thousand: 'k',
+            million: 'mill',
+            billion: 'mrd',
+            trillion: 'b'
+        },
+        ordinal: function (number) {
+            return '.';
+        },
+        currency: {
+            symbol: 'NOK'
+        }
+    };
+
+    // Node
+    if (typeof module !== 'undefined' && module.exports) {
+        module.exports = language;
+    }
+    // Browser
+    if (typeof window !== 'undefined' && this.numeral && this.numeral.language) {
+        this.numeral.language('no', language);
     }
 }());
 
